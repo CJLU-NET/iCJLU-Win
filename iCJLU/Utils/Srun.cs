@@ -13,25 +13,25 @@ using System.Windows.Shapes;
 
 namespace iCJLU.Utils
 {
-	public class Srun
-	{
-		private static readonly HttpClient client = new HttpClient();
+    public class Srun
+    {
+        private static readonly HttpClient client = new HttpClient();
 
-		private static string host = "10.253.0.100";
-		private static string baseUri = "http://10.253.0.100/";
-		private static string getChallengeApi = "http://10.253.0.100/cgi-bin/get_challenge";
-		private static string srunPortalApi = "http://10.253.0.100/cgi-bin/srun_portal";
-		private static string srunPortalPhone = "http://10.253.0.100/srun_portal_phone.php";
+        private static string host = "10.253.0.100";
+        private static string baseUri = "http://10.253.0.100/";
+        private static string getChallengeApi = "http://10.253.0.100/cgi-bin/get_challenge";
+        private static string srunPortalApi = "http://10.253.0.100/cgi-bin/srun_portal";
+        private static string srunPortalPhone = "http://10.253.0.100/srun_portal_phone.php";
         private static string srunPortalPC = "http://10.253.0.100/srun_portal_pc.php";
         private static string userInfoApi = "http://10.253.0.100/cgi-bin/rad_user_info";
         private static string detectApi = "http://10.253.0.100/v1/srun_portal_detect";
 
         /*phone_data = {
-			'action': 'login',
-			'username': 'xxxxx',
-			'password': 'xxxxx',
-			'ac_id': '1',
-		}*/
+            'action': 'login',
+            'username': 'xxxxx',
+            'password': 'xxxxx',
+            'ac_id': '1',
+        }*/
 
         private static readonly int n = 200;
         private static readonly int type = 1;
@@ -42,8 +42,8 @@ namespace iCJLU.Utils
         private static string ac_id = "";
         private static string ip = "";
         private static string i = "";
-		public static async Task<bool> Login(string username, string password)
-		{
+        public static async Task<bool> Login(string username, string password)
+        {
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Accept", "text/javascript, application/javascript, application/ecmascript, application/x-ecmascript, */*; q=0.01");
             client.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate");
@@ -108,38 +108,38 @@ namespace iCJLU.Utils
         }
 
         private static string getChksum(string username) {
-			string chkstr = challenge + username;
-			chkstr += challenge + hmd5;
-			chkstr += challenge + ac_id;
-			chkstr += challenge + ip;
-			chkstr += challenge + n;
-			chkstr += challenge + type;
-			chkstr += challenge + i;
-			return chkstr;
-		}
+            string chkstr = challenge + username;
+            chkstr += challenge + hmd5;
+            chkstr += challenge + ac_id;
+            chkstr += challenge + ip;
+            chkstr += challenge + n;
+            chkstr += challenge + type;
+            chkstr += challenge + i;
+            return chkstr;
+        }
 
         private static string getInfo(string username, string password)
-		{
-			string info_temp = "{\"username\":\"";
-			info_temp += username + "\",\"password\":\"";
-			info_temp += password + "\",\"ip\":\"";
-			info_temp += ip + "\",\"acid\":\"";
-			info_temp += ac_id + "\",\"enc_ver\":\"";
-			info_temp += enc + "\"}";
+        {
+            string info_temp = "{\"username\":\"";
+            info_temp += username + "\",\"password\":\"";
+            info_temp += password + "\",\"ip\":\"";
+            info_temp += ip + "\",\"acid\":\"";
+            info_temp += ac_id + "\",\"enc_ver\":\"";
+            info_temp += enc + "\"}";
 
             File.WriteAllText("info.txt", info_temp);
 
-			return info_temp.Replace(" ", "").Replace("'", "\"");
-		}
+            return info_temp.Replace(" ", "").Replace("'", "\"");
+        }
 
         private static async Task getIp()
-		{
+        {
             string res = await client.GetStringAsync(baseUri);
-			Regex regex = new Regex("id=\"user_ip\" value=\"(.*?)\"");
-			Match match = regex.Match(res);
-			string value = match.Groups[1].Value;
-			ip = value;
-		}
+            Regex regex = new Regex("id=\"user_ip\" value=\"(.*?)\"");
+            Match match = regex.Match(res);
+            string value = match.Groups[1].Value;
+            ip = value;
+        }
 
         private static async Task getAcId()
         {
@@ -151,13 +151,13 @@ namespace iCJLU.Utils
         }
 
         private static async Task getChallenge(string username) {
-			string time = (DateTimeOffset.Now.ToUnixTimeSeconds() * 1000).ToString(); ;
-			string callback = "jQuery112406728703022454459_" + time;
-			string param = "callback=" + callback + "&username=" + username + "&ip=" + ip + "&_=" + time;
+            string time = (DateTimeOffset.Now.ToUnixTimeSeconds() * 1000).ToString(); ;
+            string callback = "jQuery112406728703022454459_" + time;
+            string param = "callback=" + callback + "&username=" + username + "&ip=" + ip + "&_=" + time;
             string res = await client.GetStringAsync(getChallengeApi + "?" + param);
-			Regex regex = new Regex("\"challenge\":\"(.*?)\"");
-			Match match = regex.Match(res);
-			string value = match.Groups[1].Value;
+            Regex regex = new Regex("\"challenge\":\"(.*?)\"");
+            Match match = regex.Match(res);
+            string value = match.Groups[1].Value;
             challenge = value;
         }
 

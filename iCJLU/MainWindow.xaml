@@ -1,45 +1,45 @@
 ﻿<Window x:Class="iCJLU.MainWindow"
-		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:hc="https://handyorg.github.io/handycontrol"
-		xmlns:local="clr-namespace:iCJLU"
-		mc:Ignorable="d"
-		Title="iCJLU" Height="200" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-	<StackPanel>
-		<TextBox 
-			Width="250" 
-			hc:InfoElement.TitleWidth="40" 
-			hc:InfoElement.TitlePlacement="Left" 
-			hc:InfoElement.Title="账号" 
-			Style="{StaticResource TextBoxExtend}" 
-			Margin="0,16,0,0"
-			x:Name="User"/>
-		<PasswordBox 
-			Width="250" 
-			hc:InfoElement.TitleWidth="40" 
-			hc:InfoElement.TitlePlacement="Left" 
-			hc:InfoElement.Title="密码" 
-			Style="{StaticResource PasswordBoxExtend}" 
-			Margin="0,16,0,0"
-			x:Name="Pass"/>
-		<Button 
-			Content="登录" 
-			Style="{StaticResource ButtonPrimary}" 
-			Margin="0,16,0,0" 
-			Width="250" 
-			x:Name="Btn_Login"
-			Click="Btn_Login_Click"/>
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:local="clr-namespace:iCJLU"
+        mc:Ignorable="d"
+        Title="iCJLU" Height="200" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <StackPanel>
+        <TextBox 
+            Width="250" 
+            hc:InfoElement.TitleWidth="40" 
+            hc:InfoElement.TitlePlacement="Left" 
+            hc:InfoElement.Title="账号" 
+            Style="{StaticResource TextBoxExtend}" 
+            Margin="0,16,0,0"
+            x:Name="User"/>
+        <PasswordBox 
+            Width="250" 
+            hc:InfoElement.TitleWidth="40" 
+            hc:InfoElement.TitlePlacement="Left" 
+            hc:InfoElement.Title="密码" 
+            Style="{StaticResource PasswordBoxExtend}" 
+            Margin="0,16,0,0"
+            x:Name="Pass"/>
+        <Button 
+            Content="登录" 
+            Style="{StaticResource ButtonPrimary}" 
+            Margin="0,16,0,0" 
+            Width="250" 
+            x:Name="Btn_Login"
+            Click="Btn_Login_Click"/>
 
-		<StackPanel
-			Margin="0,12,0,0" 
-			Width="250" >
+        <StackPanel
+            Margin="0,12,0,0" 
+            Width="250" >
             <TextBlock HorizontalAlignment="Right">
-				<Hyperlink NavigateUri="self://about" Click="Hyperlink_Click" ToolTip="关于软件">关于软件</Hyperlink>
-				<Hyperlink NavigateUri="https://github.com/FoskyM/CJLU-iCJLU" Click="Hyperlink_Click" ToolTip="项目仓库">项目仓库</Hyperlink>
-				<Hyperlink NavigateUri="self://donate" Click="Hyperlink_Click" ToolTip="打赏" Foreground="Red">打赏</Hyperlink>
-			</TextBlock>
-		</StackPanel>
-	</StackPanel>
+                <Hyperlink NavigateUri="self://about" Click="Hyperlink_Click" ToolTip="关于软件">关于软件</Hyperlink>
+                <Hyperlink NavigateUri="https://github.com/FoskyM/iCJLU-Win" Click="Hyperlink_Click" ToolTip="项目仓库">项目仓库</Hyperlink>
+                <Hyperlink NavigateUri="self://donate" Click="Hyperlink_Click" ToolTip="打赏" Foreground="Red">打赏</Hyperlink>
+            </TextBlock>
+        </StackPanel>
+    </StackPanel>
 </Window>
