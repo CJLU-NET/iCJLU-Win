@@ -6,7 +6,7 @@
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:local="clr-namespace:iCJLU"
         mc:Ignorable="d"
-        Title="iCJLU" Height="200" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="iCJLU" Height="225" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <StackPanel>
         <TextBox 
             Width="250" 
